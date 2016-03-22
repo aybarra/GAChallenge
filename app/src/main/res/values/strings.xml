@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">GAChallenge</string>
+    <string name="to_add_groceries_text">Click + to add groceries</string>
+    <string name="no_groceries_text">No groceries added</string>
 </resources>

@@ -1,64 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <android.support.v7.widget.CardView
-        xmlns:card_view="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/card_view"
+    <TextView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        card_view:cardCornerRadius="4dp"
-        card_view:cardUseCompatPadding="true">
+        android:text="Item Name"
+        android:textColor="#000000"
+        android:id="@+id/itemName"
+        android:layout_alignParentTop="true"
+        android:paddingEnd="16dp"
+        android:textSize="16sp"
+        android:paddingTop="16dp"
+        android:paddingStart="72dp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Item Name"
-                android:id="@+id/itemName"
-                android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/imageView" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Item description"
+        android:id="@+id/itemDescription"
+        android:layout_below="@+id/itemName"
+        android:layout_alignParentStart="true"
+        android:paddingStart="72dp"
+        android:textSize="14sp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Item Quantity"
-                android:id="@+id/itemQuantity"
-                android:layout_below="@+id/itemName"
-                android:layout_alignStart="@+id/itemName" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Item Quantity"
+        android:id="@+id/itemQuantity"
+        android:layout_below="@+id/itemDescription"
+        android:layout_alignStart="@+id/itemName"
+        android:paddingStart="72dp"
+        android:textSize="14sp"
+        android:paddingBottom="20dp" />
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageButton"
-                android:src="@drawable/ic_edit"
-                style="?android:attr/borderlessButtonStyle"
-                android:layout_alignTop="@+id/imageView"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true" />
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageButton"
+        android:src="@drawable/ic_edit"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="Pencil icon for editing" />
 
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/imageView"
-                android:src="@mipmap/ic_launcher"
-                android:layout_centerVertical="true"
-                android:layout_alignParentStart="true" />
+    <!--For placeholder....-->
+    <!--<ImageView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:id="@+id/imageView"-->
+        <!--android:src="@mipmap/ic_launcher"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_alignParentStart="true" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="Item description"
-                android:id="@+id/itemDescription"
-                android:layout_below="@+id/imageView"
-                android:layout_alignStart="@+id/itemQuantity" />
-        </RelativeLayout>
-    </android.support.v7.widget.CardView>
-</LinearLayout>
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkBox"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true" />
+
+
+</RelativeLayout>

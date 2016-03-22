@@ -1,10 +1,12 @@
 package com.ga.gachallenge;
 
 import android.app.Activity;
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 
@@ -13,49 +15,45 @@ import java.util.ArrayList;
 /**
  * Created by andrasta on 3/21/16.
  */
-public class GroceryListAdapter extends RecyclerView.Adapter<GroceryListAdapter.ViewHolder> {
-    private ArrayList<GroceryItem> mDataset;
-    private Activity mParent;
+public class GroceryListAdapter extends ArrayAdapter<GroceryItem> {
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder {
 
         public TextView itemNameTV;
         public TextView itemQuantityTV;
         public TextView itemDescriptionTV;
 
-        public ViewHolder(View itemView) {
-            super(itemView);
+    }
 
-            itemNameTV = (TextView) itemView.findViewById(R.id.itemName);
-            itemQuantityTV = (TextView) itemView.findViewById(R.id.itemQuantity);
-            itemDescriptionTV = (TextView) itemView.findViewById(R.id.itemDescription);
+    public GroceryListAdapter(Context context, ArrayList<GroceryItem> dataset){
+        super(context, R.layout.grocery_item_view, dataset);
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent){
+
+        GroceryItem item = getItem(position);
+
+        // Check if an existing view is being reused, otherwise inflate the view
+        ViewHolder viewHolder; // view lookup cache stored in tag
+        if (convertView == null) {
+            viewHolder = new ViewHolder();
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            convertView = inflater.inflate(R.layout.grocery_item_view, parent, false);
+            viewHolder.itemNameTV = (TextView) convertView.findViewById(R.id.itemName);
+            viewHolder.itemDescriptionTV = (TextView) convertView.findViewById(R.id.itemDescription);
+            viewHolder.itemQuantityTV = (TextView) convertView.findViewById(R.id.itemQuantity);
+            convertView.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) convertView.getTag();
         }
+        // Populate the data into the template view using the data object
+        viewHolder.itemNameTV.setText(item.getItemName());
+        viewHolder.itemDescriptionTV.setText("Description: " + item.getItemDescription());
+        viewHolder.itemQuantityTV.setText("Quantity: " + item.getItemQuantity());
+
+        // Return the completed view to render on screen
+        return convertView;
+
     }
-
-    public GroceryListAdapter(ArrayList<GroceryItem> dataset, Activity parent){
-        mDataset = dataset;
-        mParent = parent;
-    }
-
-    @Override
-    public GroceryListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.grocery_item_view, parent, false);
-        ViewHolder vh = new ViewHolder(v);
-
-        return vh;
-    }
-
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.itemNameTV.setText(mDataset.get(position).getItemName());
-        holder.itemDescriptionTV.setText(mDataset.get(position).getItemDescription());
-        holder.itemQuantityTV.setText("Quantity: "+mDataset.get(position).getItemQuantity());
-    }
-
-    @Override
-    public int getItemCount() {
-        return mDataset.size();
-    }
-
 }
