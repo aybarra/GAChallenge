@@ -1,61 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Item Name"
-        android:textColor="#000000"
-        android:id="@+id/itemName"
-        android:layout_alignParentTop="true"
-        android:paddingEnd="16dp"
-        android:textSize="16sp"
-        android:paddingTop="16dp"
-        android:paddingStart="72dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Item description"
-        android:id="@+id/itemDescription"
-        android:layout_below="@+id/itemName"
-        android:layout_alignParentStart="true"
-        android:paddingStart="72dp"
-        android:textSize="14sp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Item Quantity"
-        android:id="@+id/itemQuantity"
-        android:layout_below="@+id/itemDescription"
-        android:layout_alignStart="@+id/itemName"
-        android:paddingStart="72dp"
-        android:textSize="14sp"
-        android:paddingBottom="20dp" />
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageButton"
-        android:src="@drawable/ic_edit"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:contentDescription="Pencil icon for editing" />
-
-    <!--For placeholder....-->
-    <!--<ImageView-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:id="@+id/imageView"-->
-        <!--android:src="@mipmap/ic_launcher"-->
-        <!--android:layout_centerVertical="true"-->
-        <!--android:layout_alignParentStart="true" />-->
+    android:layout_height="wrap_content"
+    android:id="@+id/itemContainer">
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -66,5 +13,78 @@
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true" />
 
+    <ViewFlipper
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/itemFlipper"
+        android:paddingStart="72dp"
+        android:measureAllChildren="false">
 
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:id="@+id/overviewContainer"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="GroceryItemName"
+                android:id="@+id/itemNameLarge"
+                android:gravity="center_vertical" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="88dp"
+            android:id="@+id/detailContainer"
+            android:orientation="vertical"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="20dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Item Name"
+                android:textColor="#000000"
+                android:id="@+id/itemName"
+                android:paddingEnd="16dp"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Item Description"
+                android:id="@+id/itemDescription"
+                android:maxLines="2"
+                android:textSize="14sp"
+                android:ellipsize="end"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="Item Quantity"
+                android:id="@+id/itemQuantity"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+    </ViewFlipper>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editItemButton"
+        android:src="@drawable/ic_edit"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:contentDescription="Pencil icon for editing"
+        android:background="@null"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"/>
 </RelativeLayout>

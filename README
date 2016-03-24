@@ -1,0 +1,8 @@
+Design decisions about the app:
+
+1. I started making the list using cardviews and recyclerview, but thought it looked pretty sparse
+   and since the guidelines say that > 3 lines of text warrants a cardview I opted for a simple list
+2. For the rows themselves I used a viewflipper to switch from overview and detail
+3. For the edit activity I allow the edit texts to be modifiable from the start of the activity, and
+   if any of them are updated, all are passed back to the parent main activity.
+4. This is targeted for API 23, with minimum API level 21 so I could try it out on my phone.

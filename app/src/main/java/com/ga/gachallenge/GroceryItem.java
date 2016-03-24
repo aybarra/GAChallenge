@@ -1,7 +1,8 @@
 package com.ga.gachallenge;
 
 /**
- * Created by andrasta on 3/21/16.
+ * @author Andy Ybarra
+ * Created by Andy Ybarra on 3/21/16.
  */
 public class GroceryItem {
     private String itemName;
@@ -24,5 +25,17 @@ public class GroceryItem {
 
     public int getItemQuantity(){
         return itemQuantity;
+    }
+
+    public void setItemName(String name) {
+        this.itemName = name;
+    }
+
+    public void setItemDescription(String desc) {
+        this.itemDescription = desc;
+    }
+
+    public void setItemQuantity(int quant) {
+        this.itemQuantity = quant;
     }
 }
